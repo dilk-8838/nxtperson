@@ -1,0 +1,231 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../views/**/*.blade.php';
+
+@theme {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-script: 'Caveat', 'Playfair Display', cursive, serif;
+
+    /* Corporate B2B Reference Navy Palette */
+    --color-brand-navy: #0c365b;
+    --color-brand-navy-dark: #071f37;
+    --color-brand-navy-deep: #051627;
+    --color-brand-navy-light: #164e80;
+    --color-brand-navy-soft: #eaf1f8;
+
+    /* Reference Agricultural Teal & Emerald Palette */
+    --color-brand-teal: #00875a;
+    --color-brand-teal-light: #00a86b;
+    --color-brand-teal-dark: #065f46;
+    --color-brand-teal-soft: #e6f6ee;
+    --color-brand-teal-border: #a7f3d0;
+
+    /* Brand Orange Accent (Logo Swoosh) */
+    --color-brand-orange: #ff7a00;
+    --color-brand-orange-dark: #ea580c;
+    --color-brand-orange-soft: #fff4ea;
+
+    /* Legacy AgriTech Custom Color Palette (Preserved for compatibility) */
+    --color-agri-dark: #071f37;
+    --color-agri-primary: #0c365b;
+    --color-agri-forest: #00875a;
+    --color-agri-leaf: #00a86b;
+    --color-agri-fresh: #10b981;
+    --color-agri-mint: #34d399;
+    --color-agri-soft: #e6f6ee;
+    --color-agri-mist: #f8fafc;
+    
+    /* Cool Clean Neutrals */
+    --color-earth-50: #ffffff;
+    --color-earth-100: #f8fafc;
+    --color-earth-200: #e2e8f0;
+    --color-earth-300: #cbd5e1;
+    --color-earth-600: #64748b;
+    --color-earth-800: #334155;
+    --color-earth-900: #0f172a;
+
+    /* Harvest Amber Accents */
+    --color-harvest-50: #fffbeb;
+    --color-harvest-100: #fef3c7;
+    --color-harvest-500: #f59e0b;
+    --color-harvest-600: #d97706;
+    --color-harvest-700: #b45309;
+}
+
+/* Custom Utilities and Agritech Styling */
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    background-color: #ffffff;
+    color: #1e293b;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    min-width: 320px;
+}
+
+/* Fluid responsive container */
+.agri-container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(1rem, 3.5vw, 3rem);
+    padding-right: clamp(1rem, 3.5vw, 3rem);
+    max-width: 1440px;
+}
+
+@media (min-width: 1920px) {
+    .agri-container {
+        max-width: 1680px;
+    }
+}
+
+@media (min-width: 2560px) {
+    .agri-container {
+        max-width: 1920px;
+    }
+}
+
+/* Ensure no elements overflow horizontally */
+img, svg, video, canvas, iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Glassmorphism subtle surface */
+.agri-glass {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(226, 232, 240, 0.85);
+}
+
+.agri-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 1.25rem;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.agri-card:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 10px 30px -4px rgba(12, 54, 91, 0.08);
+}
+
+/* Pulse animation for simulated indicators */
+@keyframes demo-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.85; transform: scale(1.02); }
+}
+
+.demo-indicator {
+    animation: demo-pulse 3s infinite ease-in-out;
+}
+
+/* Ecosystem Hub Radial Pulse */
+@keyframes hub-pulse-ring {
+    0% { transform: scale(0.95); opacity: 0.8; }
+    50% { transform: scale(1.08); opacity: 0.3; }
+    100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.hub-pulse {
+    animation: hub-pulse-ring 4s infinite ease-in-out;
+}
+
+/* Touch friendly minimums */
+.touch-target {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f8fafc;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Custom Tablet and Phone Mockup Frames */
+.mockup-tablet {
+    background: #1e293b;
+    border-radius: 1.75rem;
+    padding: 0.65rem;
+    box-shadow: 0 25px 50px -12px rgba(12, 54, 91, 0.25), 0 0 0 1px rgba(15, 23, 42, 0.1);
+    position: relative;
+}
+
+.mockup-tablet-inner {
+    background: #ffffff;
+    border-radius: 1.25rem;
+    overflow: hidden;
+}
+
+/* Realistic Modern Smartphone Mockup Frame */
+.mockup-smartphone {
+    background: #0f172a;
+    border-radius: 2.25rem;
+    padding: 0.45rem;
+    box-shadow: 0 25px 50px -12px rgba(12, 54, 91, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.12), 0 0 0 1px rgba(15, 23, 42, 0.8);
+    position: relative;
+    border: 1px solid rgba(51, 65, 85, 0.5);
+}
+
+.mockup-smartphone::before {
+    content: '';
+    position: absolute;
+    left: -3px;
+    top: 55px;
+    width: 3px;
+    height: 38px;
+    background: #334155;
+    border-radius: 2px 0 0 2px;
+}
+
+.mockup-smartphone::after {
+    content: '';
+    position: absolute;
+    right: -3px;
+    top: 65px;
+    width: 3px;
+    height: 32px;
+    background: #334155;
+    border-radius: 0 2px 2px 0;
+}
+
+.mockup-smartphone-inner {
+    background: #ffffff;
+    border-radius: 1.85rem;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.mockup-phone {
+    background: #0f172a;
+    border-radius: 2.25rem;
+    padding: 0.45rem;
+    box-shadow: 0 20px 40px -8px rgba(12, 54, 91, 0.3), 0 0 0 1px rgba(15, 23, 42, 0.2);
+    position: relative;
+}
+
+.mockup-phone-inner {
+    background: #ffffff;
+    border-radius: 1.85rem;
+    overflow: hidden;
+}
